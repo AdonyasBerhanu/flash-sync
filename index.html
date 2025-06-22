@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flash Sync</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <style>
+    body { margin: 0; background: black; transition: background 0.3s; }
+  </style>
+</head>
+<body>
+  <script>
+    const socket = io();
+
+    socket.on("flash", (data) => {
+      document.body.style.background = data.color || "white";
+      setTimeout(() => {
+        document.body.style.background = "black";
+      }, 500);
+    });
+  </script>
+</body>
+</html>
